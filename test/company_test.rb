@@ -16,6 +16,6 @@ class CompanyTest < Minitest::Test
   def test_attributes
     assert_equal [], @company.employees
     assert_equal [], @company.projects
-    assert_equal [], @company.timesheetss
+    assert_equal [], @company.timesheets
   end
 end
