@@ -18,4 +18,20 @@ class CompanyTest < Minitest::Test
     assert_equal [], @company.projects
     assert_equal [], @company.timesheets
   end
+
+  def test_can_load_employees
+    expected = @company.load_employees './data/employees.csv'
+    assert_instance_of Hash, expected
+
+    assert_equal true, expected[:success]
+    assert_nil expected[:error]
+  end
+
+  def test_does_reject_bad_employees
+    expected = @company.load_employees './data/bad_employees.csv'
+    assert_instance_of Hash, expected
+
+    assert_equal false, expected[:success]
+    assert_equal 'bad data', expected[:error]
+  end
 end
