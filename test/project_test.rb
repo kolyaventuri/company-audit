@@ -17,11 +17,11 @@ class ProjectTest < Minitest::Test
   end
 
   def test_attributes
-    assert_equal 123, project.id
-    assert_instance_of Integer, project.id
+    assert_equal 123, @project.id
+    assert_instance_of Integer, @project.id
 
-    assert_equal 'Widget Maker', project.name
-    assert_equal Date.new(2015, 1, 1), project.start_date
-    assert_equal Date.new(2018, 1, 1), project.end_date
+    assert_equal 'Widget Maker', @project.name
+    assert_equal Date.new(2015, 1, 1), @project.start_date
+    assert_equal Date.new(2018, 1, 1), @project.end_date
   end
 end
