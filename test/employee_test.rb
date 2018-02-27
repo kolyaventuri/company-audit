@@ -28,4 +28,15 @@ class EmployeeTest < Minitest::Test
     assert_equal Date.new(2015, 1, 1), @employee.start_date
     assert_equal Date.new(2018, 1, 1), @employee.end_date
   end
+
+  def test_can_validate_data
+    good = Employee.validate(['1', 'A', 'B', '2012-01-1', '2013-01-01'])
+    assert good
+
+    bad = Employee.validate(['1', 'A-', 'B'])
+    refute bad
+
+    bad = Employee.validate(['fire', 'A', 'B', '2012-01-1', '2013-01-01'])
+    refute bad
+  end
 end
