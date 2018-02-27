@@ -1,0 +1,15 @@
+Invalid Days Worked:
+Susan Smith worked on Widgets on 2016-01-01, it was a weekend
+John Smith worked on Widgets on 2016-01-01, it was a weekend
+John Smith worked on Widgets on 2016-01-04, it was a weekend
+John Smith worked on Widgets on 2016-01-05, it was a weekend
+Susan Smith worked on More Widgets outside of project dates on 2016-11-15
+Susan Smith worked on More Widgets on 2016-12-15, it was a weekend
+Susan Smith worked on More Widgets on 2017-02-15, it was a weekend
+John Smith worked on More Widgets on 2017-02-01, it was a weekend
+John Smith worked on More Widgets on 2017-03-01, it was a weekend
+John Smith worked on More Widgets on 2017-05-01, it was a weekend
+John Smith worked on More Widgets on 2017-06-01, it was a weekend
+Unknown employee 3 worked on Acme Project on 2017-04-04
+John Smith worked on Acme Project on 2017-05-02, it was a weekend
+John Smith worked on Acme Project on 2017-07-04, it was a weekend
