@@ -31,9 +31,7 @@ class Audit
       end
 
       weekend_check = did_work_weekend?(employee, project, timesheet)
-      unless weekend_check == true
-        output.push weekend_check
-      end
+      output.push weekend_check unless weekend_check == true
     end
     output.push('None') if output.length == 1
     output.join("\n")
