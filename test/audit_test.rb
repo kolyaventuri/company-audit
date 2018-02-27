@@ -31,5 +31,13 @@ class AuditTest < Minitest::Test
 
     out = @audit.were_invalid_days_worked
     assert_equal expected, out
+
+    expected = "Invalid Days Worked:\nNone"
+    audit = Audit.new
+    company = Company.new
+    company.load_timesheets './data/bad_timesheets.csv'
+    audit.load_company company
+
+    assert_equal expected, audit.were_invalid_days_worked
   end
 end
