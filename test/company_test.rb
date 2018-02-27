@@ -25,6 +25,8 @@ class CompanyTest < Minitest::Test
 
     assert_equal true, expected[:success]
     assert_nil expected[:error]
+
+    assert_equal 2, @company.employees.length
   end
 
   def test_does_reject_bad_employees
@@ -33,5 +35,7 @@ class CompanyTest < Minitest::Test
 
     assert_equal false, expected[:success]
     assert_equal 'bad data', expected[:error]
+
+    assert_equal 0, @company.employees.length
   end
 end
