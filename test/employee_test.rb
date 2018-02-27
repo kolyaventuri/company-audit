@@ -33,7 +33,7 @@ class EmployeeTest < Minitest::Test
     good = Employee.validate(['1', 'A', 'B', '2012-01-1', '2013-01-01'])
     assert good
 
-    bad = Employee.validate(['1', 'A', 'B'])
+    bad = Employee.validate(['1', 'A-', 'B'])
     refute bad
 
     bad = Employee.validate(['fire', 'A', 'B', '2012-01-1', '2013-01-01'])
