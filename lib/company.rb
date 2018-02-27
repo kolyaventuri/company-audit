@@ -20,6 +20,7 @@ class Company
     CSV.foreach(
       filename
     ) do |employee_info|
+      Employee::validate(employee_info)
       employee = Employee.new(
         employee_info[0],
         employee_info[1],
@@ -31,6 +32,6 @@ class Company
       @employees.push(employee)
     end
 
-    { success: true, error: nil}
+    { success: true, error: nil }
   end
 end
