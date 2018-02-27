@@ -96,4 +96,16 @@ class Company
 
     @timesheets.push(timesheet)
   end
+
+  def find_employee_by_id(employee_id)
+    @employees.select do |employee|
+      employee.id == employee_id
+    end.first
+  end
+
+  def find_project_by_id(project_id)
+    @projects.select do |project|
+      project.id == project_id
+    end.first
+  end
 end

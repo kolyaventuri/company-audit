@@ -78,4 +78,28 @@ class CompanyTest < Minitest::Test
 
     assert_equal 0, @company.timesheets.length
   end
+
+  def test_can_find_employee
+    @company.load_employees './data/employees.csv'
+    employee = @company.find_employee_by_id 2
+
+    assert_instance_of Employee, employee
+    assert_equal 2, employee.id
+    assert_equal 'John Smith', employee.name
+
+    employee = @company.find_employee_by_id 8
+    assert_nil employee
+  end
+
+  def test_can_find_project
+    @company.load_projects './data/projects.csv'
+    project = @company.find_project_by_id 2
+
+    assert_instance_of Project, project
+    assert_equal 2, project.id
+    assert_equal 'More Widgets', project.name
+
+    project = @company.find_project_by_id 8
+    assert_nil project
+  end
 end
