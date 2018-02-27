@@ -27,5 +27,9 @@ class AuditTest < Minitest::Test
 
   def test_invalid_days
     expected = File.read './test/expected_data/invalid_days.txt'
+    @audit.load_company(@company)
+
+    out = @audit.were_invalid_days_worked
+    assert_equal expected, out
   end
 end

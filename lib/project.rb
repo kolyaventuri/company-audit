@@ -18,6 +18,11 @@ class Project
     @end_date = DateHandler.string_to_date end_date
   end
 
+  def valid_date(date)
+    d = DateHandler::DHDate.new(date)
+    d.date_between(@start_date, @end_date)
+  end
+
   def self.validate(data)
     return false if data.length != 4
     return false if data[0].to_i.to_s != data[0]
