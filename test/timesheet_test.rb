@@ -29,4 +29,15 @@ class TimesheetTest < Minitest::Test
     assert_instance_of Integer, @timesheet.minutes
     assert_equal 120, @timesheet.minutes
   end
+
+  def test_can_validate_data
+    good = Timesheet.validate(['1', '2', '2012-01-1', '123'])
+    assert good
+
+    bad = Timesheet.validate(['1', '12-0'])
+    refute bad
+
+    bad = Timesheet.validate(['fire', 'B', 'x-0', 'x'])
+    refute bad
+  end
 end
