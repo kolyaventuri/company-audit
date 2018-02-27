@@ -13,4 +13,26 @@ class Timesheet
     @date = Date.parse date
     @minutes = minutes.to_i
   end
+
+  def self.validate(data)
+    return false if data.length != 4
+    return false unless validate_integers(data)
+    begin
+      Date.parse(data[2])
+    rescue ArgumentError
+      return false
+    end
+    true
+  end
+
+  def self.validate_integers(data)
+    begin
+      Integer(data[0])
+      Integer(data[1])
+      Integer(data[3])
+    rescue ArgumentError
+      return false
+    end
+    true
+  end
 end
