@@ -4,6 +4,7 @@ require 'csv'
 
 require_relative 'employee'
 require_relative 'project'
+require_relative 'timesheet'
 
 # Defines a company
 class Company
@@ -47,6 +48,21 @@ class Company
     { success: true, error: nil }
   end
 
+  def load_timesheets(filename)
+    CSV.foreach(
+      filename
+    ) do |timesheet_info|
+      unless Timesheet.validate(timesheet_info)
+        @timesheets = []
+        return { success: false, error: 'bad data' }
+      end
+
+      add_timesheet(timesheet_info)
+    end
+
+    { success: true, error: nil }
+  end
+
   def add_employee(employee_info)
     employee = Employee.new(
       employee_info[0],
@@ -68,5 +84,16 @@ class Company
     )
 
     @projects.push(project)
+  end
+
+  def add_timesheet(timesheet_info)
+    timesheet = Timesheet.new(
+      timesheet_info[0],
+      timesheet_info[1],
+      timesheet_info[2],
+      timesheet_info[3]
+    )
+
+    @timesheets.push(timesheet)
   end
 end

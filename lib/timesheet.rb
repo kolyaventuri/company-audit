@@ -16,6 +16,7 @@ class Timesheet
 
   def self.validate(data)
     return false if data.length != 4
+    return false if data.include? nil
     return false unless validate_integers(data)
     begin
       Date.parse(data[2])
