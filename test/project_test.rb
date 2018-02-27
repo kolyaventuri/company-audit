@@ -26,4 +26,15 @@ class ProjectTest < Minitest::Test
     assert_equal Date.new(2015, 1, 1), @project.start_date
     assert_equal Date.new(2018, 1, 1), @project.end_date
   end
+
+  def test_can_validate_data
+    good = Project.validate(['1', 'B', '2012-01-1', '2013-01-01'])
+    assert good
+
+    bad = Project.validate(['1', '12-0'])
+    refute bad
+
+    bad = Project.validate(['fire', 'B', '2012-01-1', '2013-01-01'])
+    refute bad
+  end
 end
