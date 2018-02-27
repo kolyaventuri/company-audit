@@ -90,4 +90,16 @@ class CompanyTest < Minitest::Test
     employee = @company.find_employee_by_id 8
     assert_nil employee
   end
+
+  def test_can_find_project
+    @company.load_project './data/projects.csv'
+    project = @company.find_project_by_id 3
+
+    assert_instance_of Project, project
+    assert_equal 2, project.id
+    assert_equal 'More Widgets', project.name
+
+    project = @company.find_project_by_id 8
+    assert_nil project
+  end
 end
