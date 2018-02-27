@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Defines an employee
 class Employee
   attr_reader :id,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Defines a timesheet
 class Timesheet
   attr_reader :employee_id,

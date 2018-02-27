@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Defines a project
 class Project
   attr_reader :id,
