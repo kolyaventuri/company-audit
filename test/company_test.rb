@@ -46,10 +46,10 @@ class CompanyTest < Minitest::Test
     assert_equal true, expected[:success]
     assert_nil expected[:error]
 
-    assert_equal 2, @company.projects.length
+    assert_equal 3, @company.projects.length
   end
 
-  def test_does_reject_bad_employees
+  def test_does_reject_bad_projects
     expected = @company.load_projects './data/bad_projects.csv'
     assert_instance_of Hash, expected
 

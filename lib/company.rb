@@ -3,6 +3,7 @@
 require 'csv'
 
 require_relative 'employee'
+require_relative 'project'
 
 # Defines a company
 class Company
@@ -21,10 +22,26 @@ class Company
       filename
     ) do |employee_info|
       unless Employee.validate(employee_info)
+        @employees = []
         return { success: false, error: 'bad data' }
       end
 
       add_employee(employee_info)
+    end
+
+    { success: true, error: nil }
+  end
+
+  def load_projects(filename)
+    CSV.foreach(
+      filename
+    ) do |project_info|
+      unless Project.validate(project_info)
+        @projects = []
+        return { success: false, error: 'bad data' }
+      end
+
+      add_project(project_info)
     end
 
     { success: true, error: nil }
@@ -40,5 +57,16 @@ class Company
     )
 
     @employees.push(employee)
+  end
+
+  def add_project(project_info)
+    project = Project.new(
+      project_info[0],
+      project_info[1],
+      project_info[2],
+      project_info[3]
+    )
+
+    @projects.push(project)
   end
 end
