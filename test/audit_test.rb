@@ -24,4 +24,8 @@ class AuditTest < Minitest::Test
 
     assert_instance_of Company, expected
   end
+
+  def test_invalid_days
+    expected = File.read './test/expected_data/invalid_days.txt'
+  end
 end

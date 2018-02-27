@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require './modules/date_handler'
+
 # Defines a timesheet
 class Timesheet
+  include DateHandler
+
   attr_reader :employee_id,
               :project_id,
               :date,
@@ -10,7 +14,7 @@ class Timesheet
   def initialize(employee_id, project_id, date, minutes)
     @employee_id = employee_id.to_i
     @project_id = project_id.to_i
-    @date = Date.parse date
+    @date = DateHandler.string_to_date date
     @minutes = minutes.to_i
   end
 
@@ -19,7 +23,7 @@ class Timesheet
     return false if data.include? nil
     return false unless validate_integers(data)
     begin
-      Date.parse(data[2])
+      DateHandler.string_to_date data[2]
     rescue ArgumentError
       return false
     end
